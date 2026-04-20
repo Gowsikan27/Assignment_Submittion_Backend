@@ -1,6 +1,6 @@
 import { Controller, Post, Body ,Get} from '@nestjs/common';
 import { AssignmentsService } from './assignments.service';
-
+import { Put, Param } from '@nestjs/common';
 
 @Controller('assignments')
 export class AssignmentsController {
@@ -14,5 +14,10 @@ export class AssignmentsController {
   @Get()
 findAll() {
   return this.assignmentService.findAll();
+}
+
+@Put(':id')
+update(@Param('id') id: string, @Body() body: any) {
+  return this.assignmentService.update(id, body);
 }
 }
