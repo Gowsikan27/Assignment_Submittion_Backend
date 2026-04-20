@@ -18,4 +18,8 @@ async findAll() {
 async update(id: string, data: any) {
   return this.assignmentModel.findByIdAndUpdate(id, data, { new: true });
 }
+
+async delete(id: string) {
+  return this.assignmentModel.findByIdAndDelete(id);
+}
 }
