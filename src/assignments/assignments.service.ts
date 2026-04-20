@@ -11,6 +11,8 @@ export class AssignmentsService {
   async create(data: any) {
     return new this.assignmentModel(data).save();
   }
-
+async findAll() {
+  return this.assignmentModel.find();
+}
   
 }

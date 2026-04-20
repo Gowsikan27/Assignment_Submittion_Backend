@@ -1,5 +1,6 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body ,Get} from '@nestjs/common';
 import { AssignmentsService } from './assignments.service';
+
 
 @Controller('assignments')
 export class AssignmentsController {
@@ -9,4 +10,9 @@ export class AssignmentsController {
   create(@Body() body: any) {
     return this.assignmentService.create(body);
   }
+
+  @Get()
+findAll() {
+  return this.assignmentService.findAll();
+}
 }
