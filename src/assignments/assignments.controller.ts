@@ -1,29 +1,27 @@
-import { Controller, Post, Body ,Get} from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { AssignmentsService } from './assignments.service';
-import { Put, Param } from '@nestjs/common';
-import { Delete } from '@nestjs/common';
 
-@Controller('assignments')
+@Controller('assignments') // ✅ VERY IMPORTANT
 export class AssignmentsController {
-  constructor(private readonly assignmentService: AssignmentsService) {}
+  constructor(private readonly service: AssignmentsService) {}
 
   @Post()
   create(@Body() body: any) {
-    return this.assignmentService.create(body);
+    return this.service.create(body);
   }
 
   @Get()
-findAll() {
-  return this.assignmentService.findAll();
-}
+  findAll() {
+    return this.service.findAll();
+  }
 
-@Put(':id')
-update(@Param('id') id: string, @Body() body: any) {
-  return this.assignmentService.update(id, body);
-}
-@Delete(':id')
-delete(@Param('id') id: string) {
-  return this.assignmentService.delete(id);
-}
+  @Put(':id')
+  update(@Param('id') id: string, @Body() body: any) {
+    return this.service.update(id, body);
+  }
 
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.service.delete(id);
+  }
 }
